@@ -2,15 +2,16 @@ let hours = document.getElementById('hours');
 let minutes = document.getElementById('minutes');
 let seconds = document.getElementById('seconds');
 let gerisayimdiv = document.getElementById('gerisayimdiv');
-
+let hoursvalue, minutesvalue, secondsvalue
 
 const form = document.getElementById('gerisayimform');
 form.addEventListener('submit', function (e) {
+
     e.preventDefault();
 
-    let hoursvalue = parseInt(hours.value);
-    let minutesvalue = parseInt(minutes.value);
-    let secondsvalue = parseInt(seconds.value);
+    hoursvalue = parseInt(hours.value);
+    minutesvalue = parseInt(minutes.value);
+    secondsvalue = parseInt(seconds.value);
 
     const hourval = document.querySelector(".hourval");
     const minval = document.querySelector(".minval");
@@ -35,7 +36,13 @@ form.addEventListener('submit', function (e) {
         secval.classList.replace('d-none', 'd-flex');
     }
 
+
+
     else {
+        hourval.classList.replace('d-flex', 'd-none');
+        minval.classList.replace('d-flex', 'd-none');
+        secval.classList.replace('d-flex', 'd-none');
+
         document.getElementById('startBtn').disabled = true;
         let totalSeconds = hoursvalue * 3600 + minutesvalue * 60 + secondsvalue;
         function gerisayimfun() {
@@ -56,7 +63,7 @@ form.addEventListener('submit', function (e) {
                       right top
                       no-repeat
                     `
-                  });
+                });
             } else {
                 let hour = Math.floor(totalSeconds / 3600);
                 let min = Math.floor((totalSeconds % 3600) / 60);
@@ -73,5 +80,8 @@ form.addEventListener('submit', function (e) {
 
         gerisayimfun();
     }
+
+
     return;
 });
+
