@@ -24,24 +24,24 @@ form.addEventListener('submit', function (e) {
 
     }
 
-    else if (hoursvalue > 24 || hoursvalue < 0) {
+     if (hoursvalue > 24 || hoursvalue < 0) {
         hourval.classList.replace('d-none', 'd-flex');
     }
 
-    else if (minutesvalue > 60 || minutesvalue < 0) {
+     if (minutesvalue > 60 || minutesvalue < 0) {
         minval.classList.replace('d-none', 'd-flex');
     }
 
-    else if (secondsvalue > 60 || secondsvalue < 0) {
+     if (secondsvalue > 60 || secondsvalue < 0) {
         secval.classList.replace('d-none', 'd-flex');
     }
 
 
 
     else {
-        hourval.classList.replace('d-flex', 'd-none');
-        minval.classList.replace('d-flex', 'd-none');
         secval.classList.replace('d-flex', 'd-none');
+        minval.classList.replace('d-flex', 'd-none');
+        hourval.classList.replace('d-flex', 'd-none');
 
         document.getElementById('startBtn').disabled = true;
         let totalSeconds = hoursvalue * 3600 + minutesvalue * 60 + secondsvalue;
@@ -80,8 +80,27 @@ form.addEventListener('submit', function (e) {
 
         gerisayimfun();
     }
+    
+hours.addEventListener('keyup', () => {
+    hoursvalue = parseInt(hours.value); 
+    if (hoursvalue <= 24 && hoursvalue >= 0) {
+        hourval.classList.replace('d-flex', 'd-none');
+    }
+});
+minutes.addEventListener('keyup', () => {
+    minutesvalue = parseInt(minutes.value);
 
+    if (minutesvalue <= 60 && minutesvalue >= 0) {
+        minval.classList.replace('d-flex', 'd-none');
+    }
+});
+seconds.addEventListener('keyup', () => {
+    secondsvalue = parseInt(seconds.value); 
 
-    return;
+    if (secondsvalue <= 60 && secondsvalue >= 0) {
+        secval.classList.replace('d-flex', 'd-none');
+    }
+});
+
 });
 
