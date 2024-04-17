@@ -44,6 +44,19 @@ form.addEventListener('submit', function (e) {
                 document.getElementById('startBtn').disabled = false;
                 let audio = document.getElementById('audio');
                 audio.play();
+                Swal.fire({
+                    title: "vaxt bitdi!",
+                    width: 600,
+                    padding: "3em",
+                    color: "#716add",
+                    background: "#000",
+                    backdrop: `
+                      rgba(0,0,123,0.4)
+                      url("giphy.gif")
+                      right top
+                      no-repeat
+                    `
+                  });
             } else {
                 let hour = Math.floor(totalSeconds / 3600);
                 let min = Math.floor((totalSeconds % 3600) / 60);
@@ -57,7 +70,7 @@ form.addEventListener('submit', function (e) {
             }
         }
 
-       
+
         gerisayimfun();
     }
     return;
